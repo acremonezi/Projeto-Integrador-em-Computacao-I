@@ -1,4 +1,4 @@
-## Univesp: Projeto Integrador em Computação I
+## Projeto Integrador em Computação I
 
 **Objetivo:** Desenvolver um software com framework web que utilize noções de banco de dados, praticando controle de versão.
 
