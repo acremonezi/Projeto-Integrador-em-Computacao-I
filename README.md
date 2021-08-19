@@ -1,7 +1,4 @@
-# Univesp-PI-01
-Univesp: Projeto Integrador em Computação I
-
-## Projeto Integrador em Computação I
+## Univesp: Projeto Integrador em Computação I
 Este projeto envolve todos os alunos de quaisquer trilhas que ainda não fizeram
 opção por disciplinas específicas.
 Carga Horária: 80 horas.
