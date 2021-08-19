@@ -9,6 +9,9 @@ services:
     restart: unless-stopped
     container_name: "mysql_pi-01"
 
+    ports:
+      - "3306:33061"
+
     volumes:
       # Configuration
       # - ../config/mysql_pi-01/mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
@@ -38,6 +41,9 @@ services:
     restart: unless-stopped
     container_name: apache_pi-01
 
+    ports:
+      - "80:8080"
+
     volumes:
       # Configuration
       - ./config/apache_pi-01/php.ini:/usr/local/etc/php/php.ini:ro
@@ -59,8 +65,11 @@ services:
       # - PMA_USER=root
       - PMA_PORT=3306
       - UPLOAD_LIMIT=300M
-      - PMA_ABSOLUTE_URI=https://db.espertamente.com.br
+      - PMA_ABSOLUTE_URI=http://localhost:8081
        
+    ports:
+      - "80:8081"
+      
     volumes:
       # Data Storage
       - ./data/phpmyadmin_pi-01:/sessions
