@@ -10,7 +10,7 @@ services:
     container_name: "mysql_pi-01"
 
     ports:
-      - "3306:33061"
+      - "33061:3306"
 
     volumes:
       # Configuration
@@ -42,7 +42,7 @@ services:
     container_name: apache_pi-01
 
     ports:
-      - "80:8080"
+      - "8080:80"
 
     volumes:
       # Configuration
@@ -68,7 +68,7 @@ services:
       - PMA_ABSOLUTE_URI=http://localhost:8081
        
     ports:
-      - "80:8081"
+      - "8081:80"
       
     volumes:
       # Data Storage
