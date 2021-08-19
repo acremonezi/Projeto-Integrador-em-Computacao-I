@@ -6,7 +6,7 @@ services:
 # Access via: http://localhost:8080
 
   apache_pi-01:
-    image: php:7-apache-buster
+    image: httpd:latest
     restart: unless-stopped
     container_name: apache_pi-01
 
@@ -15,7 +15,7 @@ services:
 
     volumes:
       # Data Storage
-      - ./app:/var/www/html
+      - ./app:/usr/local/apache2/htdocs/
       # Define Time
       - /etc/localtime:/etc/localtime:ro
 
@@ -77,5 +77,5 @@ services:
       # Data Storage
       - ./data/phpmyadmin_pi-01:/sessions
 
-      
+
 # -----------------------------------------------------------------
