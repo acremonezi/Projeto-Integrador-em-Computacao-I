@@ -46,10 +46,10 @@ services:
 
     volumes:
       # Configuration
-      - ./config/apache_pi-01/php.ini:/usr/local/etc/php/php.ini:ro
+      # - ./config/apache_pi-01/php.ini:/usr/local/etc/php/php.ini:ro
 
       # data Storage
-      - ./data/apache_pi-01:/var/www/html
+      - ./app:/var/www/html
 
 
 # -----------------------------------------------------------------
