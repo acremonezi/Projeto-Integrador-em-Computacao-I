@@ -1,0 +1,3 @@
+# Ignore everything into the "data" directory.
+data/*
+
