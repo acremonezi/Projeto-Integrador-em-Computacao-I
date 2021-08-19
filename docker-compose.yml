@@ -2,38 +2,6 @@ version: '3.7'
 services:
 
 # -----------------------------------------------------------------
-# Database
-# Access via: (Host: localhost) and (Port:33061)
-
-  mysql_pi-01:
-    image: mysql:8.0
-    restart: unless-stopped
-    container_name: "mysql_pi-01"
-
-    ports:
-      - "33061:3306"
-
-    volumes:
-      # Configuration
-      - ../config/mysql_pi-01/mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
-      # - ../config/mysql_pi-01/config-file.cnf:/etc/mysql/config-file.cnf:ro
-      # - ../config/mysql_pi-01/custom.cnf:/etc/mysql/conf.d/custom.cnf:ro
-
-      # Data Storage
-      - ./data/mysql_pi-01:/var/lib/mysql
-
-    command:
-       - --default-authentication-plugin=mysql_native_password
-       - --character-set-server=utf8mb4
-       - --collation-server=utf8mb4_general_ci
-
-    environment:
-      MYSQL_ROOT_PASSWORD: 'XHdfSQM1RkoOqc2i2kTY'
-      MYSQL_DATABASE: 'mysql_pi-01'
-      MYSQL_USER: 'mysql_pi-01'
-      MYSQL_PASSWORD: 'F6fmy9l1SzRcD1Zqsxhs'
-
-# -----------------------------------------------------------------
 # WebServer
 # Access via: http://localhost:8080
 
@@ -48,6 +16,43 @@ services:
     volumes:
       # Data Storage
       - ./app:/var/www/html
+      # Define Time
+      - /etc/localtime:/etc/localtime:ro
+
+
+# -----------------------------------------------------------------
+# Database
+# Access via: (Host: localhost) and (Port:33061)
+
+  mysql_pi-01:
+    image: mysql:8.0
+    restart: unless-stopped
+    container_name: "mysql_pi-01"
+
+    ports:
+      - "33061:3306"
+
+    volumes:
+      # Configuration
+      - ./config/mysql_pi-01/mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
+      # Data Storage
+      - ./data/mysql_pi-01:/var/lib/mysql
+      # Define Time
+      - /etc/localtime:/etc/localtime:ro
+
+    command:
+       - --default-authentication-plugin=mysql_native_password
+       - --character-set-server=utf8mb4
+       - --collation-server=utf8mb4_general_ci
+
+    environment:
+      # Database root user passord:
+      MYSQL_ROOT_PASSWORD: 'XHdfSQM1RkoOqc2i2kTY'
+      # App Schema Access:
+      MYSQL_DATABASE: 'mysql_pi-01'
+      MYSQL_USER: 'mysql_pi-01'
+      MYSQL_PASSWORD: 'F6fmy9l1SzRcD1Zqsxhs'
+
 
 # -----------------------------------------------------------------
 # Database Management IDE
@@ -70,6 +75,8 @@ services:
       
     volumes:
       # Data Storage
-      # - ./data/phpmyadmin_pi-01:/sessions
+      - ./data/phpmyadmin_pi-01:/sessions
+      # Define Time
+      - /etc/localtime:/etc/localtime:ro
 
 # -----------------------------------------------------------------
