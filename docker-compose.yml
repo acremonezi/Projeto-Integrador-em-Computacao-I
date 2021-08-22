@@ -6,7 +6,7 @@ services:
 # Access via: http://localhost:8080
 
   apache_pi1:
-    image: acremonezi/apache-wsgi:3.9
+    image: apache-wsgi:3.9
     restart: unless-stopped
     container_name: apache_pi1
     build:
