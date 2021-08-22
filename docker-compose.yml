@@ -11,6 +11,7 @@ services:
     container_name: apache_pi1
     build:
       context: .
+      dockerfile: ./config/docker/Dockerfile
       args:
         - pyversion=3.9
  
