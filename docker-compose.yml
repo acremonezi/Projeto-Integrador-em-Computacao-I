@@ -5,19 +5,37 @@ services:
 # WebServer
 # Access via: http://localhost:8080
 
+  # apache_pi1:
+  #   image: httpd:latest
+  #   restart: unless-stopped
+  #   container_name: apache_pi1
+
+  #   ports:
+  #     - "8080:80"
+
+  #   volumes:
+  #     # Data Storage
+  #     - ./app:/usr/local/apache2/htdocs/
+  #     # Define Time
+  #     - /etc/localtime:/etc/localtime:ro
+
   apache_pi1:
-    image: httpd:latest
     restart: unless-stopped
     container_name: apache_pi1
-
+    build:
+      context: .
+      args:
+        - pyversion=3.9
+ 
     ports:
       - "8080:80"
 
     volumes:
       # Data Storage
-      - ./app:/usr/local/apache2/htdocs/
+      - ./app:/var/www/html/
       # Define Time
       - /etc/localtime:/etc/localtime:ro
+
 
 # -----------------------------------------------------------------
 # Database
