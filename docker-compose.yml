@@ -5,10 +5,10 @@ services:
 # WebServer
 # Access via: http://localhost:8080
 
-  apache_pi-01:
+  apache_pi1:
     image: httpd:latest
     restart: unless-stopped
-    container_name: apache_pi-01
+    container_name: apache_pi1
 
     ports:
       - "8080:80"
@@ -19,24 +19,23 @@ services:
       # Define Time
       - /etc/localtime:/etc/localtime:ro
 
-
 # -----------------------------------------------------------------
 # Database
 # Access via: (Host: localhost), (Port:33061) and (User/Passwords are bellow).
 
-  mysql_pi-01:
+  mysql_pi1:
     image: mysql:8.0
     restart: unless-stopped
-    container_name: "mysql_pi-01"
+    container_name: "mysql_pi1"
 
     ports:
       - "33061:3306"
 
     volumes:
       # Configuration
-      - ./config/mysql_pi-01/mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
+      - ./config/mysql_pi1/mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
       # Data Storage
-      - ./data/mysql_pi-01:/var/lib/mysql
+      - ./data/mysql_pi1:/var/lib/mysql
       # Define Time
       - /etc/localtime:/etc/localtime:ro
 
@@ -49,21 +48,20 @@ services:
       # Database root user passord:
       MYSQL_ROOT_PASSWORD: 'XHdfSQM1RkoOqc2i2kTY'
       # App Schema Access:
-      MYSQL_DATABASE: 'mysql_pi-01'
-      MYSQL_USER: 'mysql_pi-01'
+      MYSQL_DATABASE: 'mysql_pi1'
+      MYSQL_USER: 'mysql_pi1'
       MYSQL_PASSWORD: 'F6fmy9l1SzRcD1Zqsxhs'
-
 
 # -----------------------------------------------------------------
 # Database Management IDE
 # Access via: http://localhost:8081
 
-  phpmyadmin_pi-01:
+  phpmyadmin_pi1:
     image: phpmyadmin:latest
     restart: unless-stopped
-    container_name: phpmyadmin_pi-01
+    container_name: phpmyadmin_pi1
     environment:
-      - PMA_HOSTS=mysql_pi-01
+      - PMA_HOSTS=mysql_pi1
       - PMA_USER=root
       - PMA_PASSWORD=XHdfSQM1RkoOqc2i2kTY
       - PMA_PORT=3306
@@ -75,7 +73,6 @@ services:
       
     volumes:
       # Data Storage
-      - ./data/phpmyadmin_pi-01:/sessions
-
+      - ./data/phpmyadmin_pi1:/sessions
 
 # -----------------------------------------------------------------
