@@ -78,6 +78,6 @@ services:
       
     volumes:
       # Data Storage
-      - ./data/phpmyadmin_pi1:/sessions
+      - ./data/phpmyadmin:/sessions
 
 # -----------------------------------------------------------------
