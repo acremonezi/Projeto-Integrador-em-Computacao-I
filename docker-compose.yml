@@ -5,21 +5,8 @@ services:
 # WebServer
 # Access via: http://localhost:8080
 
-  # apache_pi1:
-  #   image: httpd:latest
-  #   restart: unless-stopped
-  #   container_name: apache_pi1
-
-  #   ports:
-  #     - "8080:80"
-
-  #   volumes:
-  #     # Data Storage
-  #     - ./app:/usr/local/apache2/htdocs/
-  #     # Define Time
-  #     - /etc/localtime:/etc/localtime:ro
-
   apache_pi1:
+    image: acremonezi/wsgi-base:3.9
     restart: unless-stopped
     container_name: apache_pi1
     build:
@@ -51,9 +38,9 @@ services:
 
     volumes:
       # Configuration
-      - ./config/mysql_pi1/mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
+      - ./config/mysql/mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
       # Data Storage
-      - ./data/mysql_pi1:/var/lib/mysql
+      - ./data/mysql:/var/lib/mysql
       # Define Time
       - /etc/localtime:/etc/localtime:ro
 
