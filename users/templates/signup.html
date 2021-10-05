@@ -13,7 +13,7 @@
         <br>
         <h1>Cadastre-se</h1>
         <hr>
-        <form method="POST" action="#">
+        <form method="POST" action="#">{% csrf_token %}
             <label>Digite seu nome:</label>
             <input class="form-control" type="text" placeholder="Nome..." name = "nome">
             <br>
