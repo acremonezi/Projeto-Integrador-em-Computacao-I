@@ -1,2 +1,3 @@
 web: gunicorn certification.wsgi
-set DISABLE_COLLECTSTATIC=1
+heroku config:set DISABLE_COLLECTSTATIC=1
+config:set DISABLE_COLLECTSTATIC=1
