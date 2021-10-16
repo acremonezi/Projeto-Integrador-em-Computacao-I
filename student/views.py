@@ -57,4 +57,24 @@ def signup_validate(request):
 
 # SignIN Validate
 def signin_validate(request):
-    return HttpResponse('signin_validate ok!!!!')
+    # Form GET Info
+    email = request.POST.get('email')
+    senha = request.POST.get('senha')
+    
+    # Auth Validation
+    senha = hashlib.sha256(senha.encode()).hexdigest()
+    student = Student.objects.filter(email = email).filter(password = senha)
+
+    # Auth NOT Success
+    if len(student) == 0:
+        return redirect('/auth/signin?status=1')
+
+    # Auth Success
+    elif len(student) > 0:
+        request.session['student'] = student[0].id
+
+        return redirect('/home/')
+
+def exit(request):
+    request.session.flush()
+    return redirect('/auth/signin')

@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}
+Home
+
+{% endblock%}
+
+{% block 'body' %}
+<div class="container">
+  <br>
+  <h1>Nossos cursos</h1>
+  <div class="row">
+      
+
+      {% for i in course %}
+
+          <div style="margin-top: 20px;" class="col-md">
+              <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="{{i.thumb.url}}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{i.nome}}</h5>
+                    <p class="card-text">{{i.descricao}}</p>
+                    <a href="#" class="btn btn-primary">Acessar</a>
+                    <a href="#" class="btn btn-primary">Certificado</a>
+                  </div>
+                </div>
+          </div>
+        
+      {% endfor %}
+
+  </div>
+
+</div>
+{% endblock %}

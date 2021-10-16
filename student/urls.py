@@ -7,4 +7,6 @@ urlpatterns = [
 
     path('signup_validate/', views.signup_validate, name = 'signup_validate'),
     path('signin_validade/', views.signin_validate, name = 'signin_validate'),
+
+    path('exit/', views.exit, name = 'exit'),
 ]

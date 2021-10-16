@@ -21,6 +21,19 @@
 
             <input class="form-control" type="password" placeholder="Senha" name = "senha">
             <br>
+
+            {% if status == '1' %}
+                <div class="alert alert-danger" role="alert">
+                    Desculpe, o e-Mail ou Senha digitados <b>estão errados</b>.<br>Por favor, tente novamente.
+                </div>
+            {% endif %}
+
+            {% if status == '2' %}
+                <div class="alert alert-warning" role="alert">
+                    Desculpe, você precisa <b>efetuar login</b> antes de entrar na plataforma.
+                </div>
+            {% endif %}
+
             <input class="btn btn-success btn-lg" type="submit" value="Entrar">
 
         </form>
