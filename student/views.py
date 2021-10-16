@@ -8,12 +8,23 @@ from .models import Student
 # SignUP
 def signup(request):
     # return HttpResponse('function signup') // test view and urls 
+    
+    # Block logedIN users to access singUP again
+    if request.session.get('student'):
+        return redirect("/home")
+
     status = request.GET.get('status')
     return render(request, 'signup.html', {'status': status})
 
+
 # SignIN
 def signin(request):
-    # return HttpResponse('function signin') // test view and urls 
+    # return HttpResponse('function signin') // test view and urls
+
+    # Block logedIN users to access singIN again
+    if request.session.get('student'):
+        return redirect("/home")
+
     status = request.GET.get('status')
     return render(request, 'signin.html', {'status': status})
 

@@ -13,3 +13,8 @@ def home(request):
         return render(request, 'home.html', {'course': course, 'student': student})
     else:
         return redirect('/auth/signin?status=2')
+
+
+def index(request):
+    
+    return HttpResponse('index ok!!!!')
