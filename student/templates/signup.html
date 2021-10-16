@@ -1,0 +1,64 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}Cadastro{% endblock%}
+
+{% block 'body' %}
+<div class="container">
+    
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+
+    <div class="col-md">
+        <br>
+        <h1>Cadastre-se</h1>
+        <hr>
+        <br>
+        <form method="POST" action="{% url 'signup_validate'%}"> {% csrf_token %}
+
+            <input class="form-control" type="text" placeholder="Nome" name = "nome">
+            <br>
+            <input class="form-control" type="text" placeholder="Sobrenome" name = "sobrenome">
+            <br>
+            <input class="form-control" type="text" placeholder="e-Mail" name = "email">
+            <br>
+            <input class="form-control" type="password" placeholder="Senha" name = "senha">
+            <br>
+
+    {% if status == '0' %}
+        <div class="alert alert-success" role="alert">
+            Meus Parabéns!<br>Seu cadastro foi realizado com Sucesso.
+        </div>
+    {% endif %}
+
+    {% if status == '1' %}
+        <div class="alert alert-danger" role="alert">
+            Desculpe, o e-Mail informado <b>já está cadastrado</b> no sistema.<br>Por favor,  <a href="/auth/signin/">clique aqui</a> para fazer login.
+        </div>
+    {% endif %}
+
+    {% if status == '2' %}
+        <div class="alert alert-danger" role="alert">
+            Desculpe, eu e-Mail, Nome ou Sobrenome <b>não podem ficar em branco</b>. Por favor, tente novamente.
+        </div>
+    {% endif %}
+
+     {% if status == '3' %}
+        <div class="alert alert-danger" role="alert">
+            Desculpe, para sua segurança, sua senha precisa <b>conter entre 8 a 12 caracteres</b>. Por favor, tente novamente.
+        </div>
+    {% endif %}
+
+            <input class="btn btn-success btn-lg" type="submit" value="Cadastrar">
+            
+        </form>
+    </div>
+
+    <div class="col-md-3">
+
+    </div>
+</div>
+
+</div>
+{% endblock %}

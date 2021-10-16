@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}Entrar{% endblock%}
+
+{% block 'body' %}
+<div class="container">
+
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md">
+        <br>
+        <h1>Login</h1>
+        <hr>
+        <br>
+        <form method="POST" action="{% url 'signin_validate'%}">{% csrf_token %}
+
+            <input class="form-control" type="text" placeholder="e-Mail" name = "email">
+            <br>
+
+            <input class="form-control" type="password" placeholder="Senha" name = "senha">
+            <br>
+            <input class="btn btn-success btn-lg" type="submit" value="Entrar">
+
+        </form>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+
+</div>
+{% endblock %}
