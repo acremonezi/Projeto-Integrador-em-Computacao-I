@@ -3,36 +3,61 @@ services:
 
 # -----------------------------------------------------------------
 # WebServer
-# Access via: http://localhost:8080
 
-  apache_pi1:
-    image: apache-wsgi:3.9
+  nginx:
     restart: unless-stopped
-    container_name: apache_pi1
+    container_name: nginx
     build:
       context: .
-      dockerfile: ./devops/docker/Dockerfile
-      args:
-        - pyversion=3.9
+      dockerfile: ./devops/nginx/Dockerfile
+    
+    depends_on:
+      - django_gunicorn
+
+    ports:
+      - "80:80"
+
+    #volumes:
+      # Data Storage
+      # - ./certification:/var/www/html/
+      #- ./staticfiles:/static
+
+      # Define Time
+      #- /etc/localtime:/etc/localtime:ro
+
+# -----------------------------------------------------------------
+# Django e Gunicorn
+
+  django_gunicorn:
+    restart: unless-stopped
+    container_name: django_gunicorn
+    build:
+      context: .
+      dockerfile: ./devops/django_gunicorn/Dockerfile
  
     ports:
-      - "8080:80"
+      - "8000:8000"
 
-    volumes:
+    #env_file:
+    #  - ./devops/django_gunicorn/.env
+
+    #volumes:
       # Data Storage
-      - ./app:/var/www/html/
+      #- ./django_project:/app
+      #- ./staticfiles:/static
+
       # Define Time
-      - /etc/localtime:/etc/localtime:ro
+      #- /etc/localtime:/etc/localtime:ro
 
 
 # -----------------------------------------------------------------
 # Database
 # Access via: (Host: localhost), (Port:33061) and (User/Passwords are bellow).
 
-  mysql_pi1:
+  mysql:
     image: mysql:8.0
     restart: unless-stopped
-    container_name: "mysql_pi1"
+    container_name: "mysql"
 
     ports:
       - "33061:3306"
@@ -54,18 +79,18 @@ services:
       # Database root user passord:
       MYSQL_ROOT_PASSWORD: 'XHdfSQM1RkoOqc2i2kTY'
       # App Schema Access:
-      MYSQL_DATABASE: 'mysql_pi1'
-      MYSQL_USER: 'mysql_pi1'
+      MYSQL_DATABASE: 'mysql'
+      MYSQL_USER: 'mysql'
       MYSQL_PASSWORD: 'F6fmy9l1SzRcD1Zqsxhs'
 
 # -----------------------------------------------------------------
 # Database Management IDE
 # Access via: http://localhost:8081
 
-  phpmyadmin_pi1:
+  phpmyadmin:
     image: phpmyadmin:latest
     restart: unless-stopped
-    container_name: phpmyadmin_pi1
+    container_name: phpmyadmin
     environment:
       - PMA_HOSTS=mysql_pi1
       - PMA_USER=root
