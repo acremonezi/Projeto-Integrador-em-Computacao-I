@@ -5,11 +5,12 @@ services:
 # WebServer
 
   nginx:
+    image: nginx:1.21  
     restart: unless-stopped
     container_name: nginx
-    build:
-      context: .
-      dockerfile: ./devops/nginx/Dockerfile
+    #build:
+      #context: .
+      #dockerfile: ./devops/nginx/Dockerfile
     
     depends_on:
       - django_gunicorn
@@ -17,9 +18,9 @@ services:
     ports:
       - "80:80"
 
-    #volumes:
+    volumes:
       # Data Storage
-      # - ./certification:/var/www/html/
+      - ./devops/nginx/default.conf:/etc/nginx/conf.d/default.conf
       #- ./staticfiles:/static
 
       # Define Time
@@ -35,15 +36,12 @@ services:
       context: .
       dockerfile: ./devops/django_gunicorn/Dockerfile
  
-    ports:
-      - "8000:8000"
-
     #env_file:
     #  - ./devops/django_gunicorn/.env
 
-    #volumes:
+    volumes:
       # Data Storage
-      #- ./django_project:/app
+      - ./django_project:/app
       #- ./staticfiles:/static
 
       # Define Time

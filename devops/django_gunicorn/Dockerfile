@@ -1,12 +1,12 @@
-FROM python:3.8.10-alpine
+FROM python:3.8
 
 RUN pip install --upgrade pip
 
-COPY ./devops/django_gunicorn/requirements.txt .
+COPY ./django_project/requirements.txt .
 RUN pip install -r requirements.txt
 
-COPY ./django_project /app
-#RUN mkdir -p /app
+#COPY ./django_project /app
+RUN mkdir -p /app
 
 WORKDIR /app
 
