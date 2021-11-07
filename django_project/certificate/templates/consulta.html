@@ -1,0 +1,70 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}Consulta{% endblock%}
+
+{% block 'body' %}
+<div class="container">
+
+<div class="row">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md">
+        <br>
+        <h1>Consulta</h1>
+        <hr>
+        <br>
+        <form method="POST" action="{% url 'search_certificate'%}">{% csrf_token %}
+
+            <input class="form-control" type="text" placeholder="Chave de Autenticação" name = "authentication_key">
+            <br>
+
+            {% for i in certificate_exist %}
+
+                    <div class="card">
+                    <div class="card-header">
+                        <h3>Estudante: {{i.student}}</h3>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><b>Curso: </b> {{i.course}}</li>
+                        <li class="list-group-item"><b>Conclusão: </b> {{i.created_date}}</li>
+                        <li class="list-group-item"><b>Chave Autenticação: </b> {{i.authentication_key}}</li>
+                    </ul>
+                    </div>
+                    <br>
+
+                <div class="alert alert-success" role="alert">
+                    Certificado <b>Válido!</b>
+                    <br>
+                </div>
+
+
+             {% endfor %}
+
+
+
+
+            {% if status == '1' %}
+                <div class="alert alert-danger" role="alert">
+                    Certificado <b>NÃO</b> é válido!
+                </div>
+            {% endif %}
+
+            {% if status == '2' %}
+                <div class="alert alert-success" role="alert">
+                    Certificado Válido!
+                    <br>
+                </div>
+            {% endif %}
+
+            <input class="btn btn-success btn-lg" type="submit" value="Buscar">
+
+        </form>
+    </div>
+    <div class="col-md-3">
+
+    </div>
+</div>
+
+</div>
+{% endblock %}

@@ -1,11 +1,8 @@
 from django.db import models
-
-from certificate.views import create_authentication_key
-
 from course.models import Course
 from student.models import Student
 
-
+from certificate.utils import create_authentication_key
 
 # Create your models here.
 
