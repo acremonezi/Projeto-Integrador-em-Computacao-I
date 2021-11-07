@@ -1,0 +1,33 @@
+{% extends 'base.html'%}
+
+{% block 'titulo'%}
+Home
+
+{% endblock%}
+
+{% block 'body' %}
+<div class="container">
+  <br>
+  <h1>Meus Certificados</h1>
+  <div class="row">
+      
+
+      {% for i in certificate %}
+
+          <div style="margin-top: 20px;" class="col-md">
+              <div class="card" style="width: 18rem;">
+                  <img class="card-img-top" src="{{i.course.thumb.url}}" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title">{{i.course}}</h5>
+                    <p class="card-text">Concluido em:<br>{{i.created_date}}</p>
+                    <a href="print_certificate" class="btn btn-primary">Imprimir</a>
+                  </div>
+                </div>
+          </div>
+        
+      {% endfor %}
+
+  </div>
+
+</div>
+{% endblock %}
