@@ -1,4 +1,4 @@
-#!/home/alcides/Projetos/Projeto-Integrador-em-Computacao-I/django_project/venv/bin/python3
+#!/home/alcides/Projects/Projeto-Integrador-em-Computacao-I/django_project/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

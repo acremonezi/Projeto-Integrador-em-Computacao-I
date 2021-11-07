@@ -1,4 +1,4 @@
-#!/home/alcides/Projetos/Projeto-Integrador-em-Computacao-I/django_project/venv/bin/python3
+#!/home/alcides/Projects/Projeto-Integrador-em-Computacao-I/django_project/venv/bin/python3
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 
