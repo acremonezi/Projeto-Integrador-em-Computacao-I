@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.fields import IntegerField
+from django.db.models.fields.related import ForeignKey
 from course.models import Course
 from student.models import Student
 
@@ -20,3 +22,5 @@ class Certificate(models.Model):
     # Colunas de Relacionamentos
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    
+    carga_horaria = IntegerField()

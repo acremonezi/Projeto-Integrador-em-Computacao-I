@@ -24,9 +24,11 @@
                     <div class="card">
                     <div class="card-header">
                         <h3>Estudante: {{i.student}}</h3>
+                        <h6><b>CPF:</b> {{i.student.cpf}}</h6>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item"><b>Curso: </b> {{i.course}}</li>
+                        <li class="list-group-item"><b>Carga horária: </b> {{i.carga_horaria}} horas</li>
                         <li class="list-group-item"><b>Conclusão: </b> {{i.created_date}}</li>
                         <li class="list-group-item"><b>Chave Autenticação: </b> {{i.authentication_key}}</li>
                     </ul>

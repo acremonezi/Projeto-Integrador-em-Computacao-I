@@ -29,4 +29,4 @@ def get_certificate(request):
         return redirect('/home/?status=0')
 
     except:
-        return HttpResponse('Erro Interno do Sistema! Por favor, tente novamente mais tarde.')
+        return HttpResponse('Esta funcionalidade será implementada no futuro.')

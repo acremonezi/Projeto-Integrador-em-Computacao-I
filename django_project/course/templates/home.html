@@ -23,6 +23,12 @@ Home
                     <a href="{{i.url}}" class="btn btn-primary">Assistir</a>
                     <a href="get_certificate" class="btn btn-secondary">Solicitar Certificado</a>
 
+                    {% comment %}
+                    <form method="POST" action="{% url 'certificate_create'%}">{% csrf_token %}
+                      <input class="form-control" type="text" name="name" value="{{i.nome}}">
+                      <input class="btn btn-success btn-lg" type="submit" value="Gerar">
+                    </form>
+                    {% endcomment %}
 
                   </div>
                 </div>

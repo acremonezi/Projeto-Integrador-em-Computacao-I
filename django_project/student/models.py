@@ -7,6 +7,7 @@ class Student(models.Model):
     lastname = models.CharField(max_length = 100)
     email = models.EmailField()
     password = models.CharField(max_length = 64)
+    cpf = models.CharField(max_length = 50)
 
     def __str__(self) -> str:
         return self.firstname

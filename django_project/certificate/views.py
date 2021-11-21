@@ -7,6 +7,8 @@ import io
 from django.http import FileResponse
 from reportlab.pdfgen import canvas
 
+from student.models import Student
+
 # Create your views here.
 
 # Certificate
@@ -48,15 +50,22 @@ def my_certificates(request):
         return redirect('/auth/signin?status=2')
     
 def print_certificate(request):
+    
+    certificate_id = request.GET.get('id')
+    #certificate_name = Certificate.objects.filter( certificate_name = Student.name)
+    
     # Create a file-like buffer to receive PDF data.
     buffer = io.BytesIO()
 
     # Create the PDF object, using the buffer as its "file."
     p = canvas.Canvas(buffer)
+    
 
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
     p.drawString(100, 700, "Certificado de Conclusao de Curso.")
+    #p.drawString(100,710, print(id))
+    
     
     # Colocar os dados no certificadoS
  

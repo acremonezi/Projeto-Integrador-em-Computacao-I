@@ -7,6 +7,7 @@ class Course(models.Model):
     descricao = models.TextField()
     thumb = models.ImageField(upload_to = "courses_images")
     url = models.URLField()
+    carga_horaria = models.IntegerField()
 
     def __str__(self) -> str:
         return self.nome
