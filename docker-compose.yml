@@ -15,8 +15,8 @@ services:
     depends_on:
       - django_gunicorn
 
-    ports:
-      - "80:80"
+    # ports:
+    #   - "80:80"
 
     volumes:
       # Data Storage
