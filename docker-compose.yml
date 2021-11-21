@@ -52,56 +52,56 @@ services:
 # Database
 # Access via: (Host: localhost), (Port:33061) and (User/Passwords are bellow).
 
-  mysql:
-    image: mysql:8.0
-    restart: unless-stopped
-    container_name: "mysql"
+  # mysql:
+  #   image: mysql:8.0
+  #   restart: unless-stopped
+  #   container_name: "mysql"
 
-    ports:
-      - "33061:3306"
+  #   ports:
+  #     - "33061:3306"
 
-    volumes:
-      # Configuration
-      # - ./devops/mysql/mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
-      # Data Storage
-      - ./data/mysql:/var/lib/mysql
-      # Define Time
-      - /etc/localtime:/etc/localtime:ro
+  #   volumes:
+  #     # Configuration
+  #     # - ./devops/mysql/mysql-init.sql:/docker-entrypoint-initdb.d/mysql-init.sql
+  #     # Data Storage
+  #     - ./data/mysql:/var/lib/mysql
+  #     # Define Time
+  #     - /etc/localtime:/etc/localtime:ro
 
-    command:
-       - --default-authentication-plugin=mysql_native_password
-       - --character-set-server=utf8
-       - --collation-server=utf8_general_ci
+  #   command:
+  #      - --default-authentication-plugin=mysql_native_password
+  #      - --character-set-server=utf8
+  #      - --collation-server=utf8_general_ci
 
-    environment:
-      # Database root user passord:
-      MYSQL_ROOT_PASSWORD: 'XHdfSQM1RkoOqc2i2kTY'
-      # App Schema Access:
-      MYSQL_DATABASE: 'mysql'
-      MYSQL_USER: 'mysql'
-      MYSQL_PASSWORD: 'F6fmy9l1SzRcD1Zqsxhs'
+  #   environment:
+  #     # Database root user passord:
+  #     MYSQL_ROOT_PASSWORD: 'XHdfSQM1RkoOqc2i2kTY'
+  #     # App Schema Access:
+  #     MYSQL_DATABASE: 'mysql'
+  #     MYSQL_USER: 'mysql'
+  #     MYSQL_PASSWORD: 'F6fmy9l1SzRcD1Zqsxhs'
 
 # -----------------------------------------------------------------
 # Database Management IDE
 # Access via: http://localhost:8081
 
-  phpmyadmin:
-    image: phpmyadmin:latest
-    restart: unless-stopped
-    container_name: phpmyadmin
-    environment:
-      - PMA_HOSTS=mysql_pi1
-      - PMA_USER=root
-      - PMA_PASSWORD=XHdfSQM1RkoOqc2i2kTY
-      - PMA_PORT=3306
-      - UPLOAD_LIMIT=300M
-      - PMA_ABSOLUTE_URI=http://localhost:8081
+  # phpmyadmin:
+  #   image: phpmyadmin:latest
+  #   restart: unless-stopped
+  #   container_name: phpmyadmin
+  #   environment:
+  #     - PMA_HOSTS=mysql_pi1
+  #     - PMA_USER=root
+  #     - PMA_PASSWORD=XHdfSQM1RkoOqc2i2kTY
+  #     - PMA_PORT=3306
+  #     - UPLOAD_LIMIT=300M
+  #     - PMA_ABSOLUTE_URI=http://localhost:8081
        
-    ports:
-      - "8081:80"
+  #   ports:
+  #     - "8081:80"
       
-    volumes:
-      # Data Storage
-      - ./data/phpmyadmin:/sessions
+  #   volumes:
+  #     # Data Storage
+  #     - ./data/phpmyadmin:/sessions
 
 # -----------------------------------------------------------------
