@@ -34,15 +34,12 @@ services:
     container_name: django_gunicorn
     build:
       context: .
-      dockerfile: ./devops/django_gunicorn/Dockerfile
+      dockerfile: ./devops/django_gunicorn/Dockerfile.Deploy
  
-    #env_file:
-    #  - ./devops/django_gunicorn/.env
-
     volumes:
       # Data Storage
       - ./django_project:/app
-      #- ./staticfiles:/static
+      #- ./django_project:/static
 
       # Define Time
       #- /etc/localtime:/etc/localtime:ro
